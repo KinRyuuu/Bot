@@ -1,5 +1,6 @@
 import discord
 from datetime import date
+import spoilerminesweeper
 
 MIN_YEAR = 2010
 MAX_YEAR = date.today().year+1
@@ -36,6 +37,7 @@ class MyClient(discord.Client):
             except Exception:
                 await message.channel.send(messages['invalid'])
 
-
+        if "minesweeper" in message:
+            await message.channel.send(spoilerminesweeper.getBoard(10, 5))
 client = MyClient()
 client.run('token here')
